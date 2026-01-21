@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+const { title = "Donald Clark", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="sticky top-0 z-50 border-b border-slate-200/60 bg-slate-50/85 backdrop-blur">
+      <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+        <a href="/" class="font-semibold">Donald Clark</a>
+      <div class="flex items-center gap-2 text-sm">
+        <a
+          href="/blog/"
+          class="rounded-md px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-200/60 hover:text-slate-900"
+        >
+          Blog
+        </a>
+
+        <a
+          href="/resume/"
+          class="rounded-md px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-200/60 hover:text-slate-900"
+        >
+          Resume
+        </a>
+
+        <a
+          href="/contact/"
+          class="rounded-md px-3 py-1.5 font-medium text-slate-700 hover:bg-slate-200/60 hover:text-slate-900"
+        >
+          Contact
+        </a>
+      </div>
+
+
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-10">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200/60 py-10">
+      <div class="mx-auto max-w-5xl px-4 text-sm text-slate-500">
+        © {new Date().getFullYear()} Donald Clark
+      </div>
+    </footer>
+  </body>
+</html>

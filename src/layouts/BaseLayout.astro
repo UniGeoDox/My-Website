@@ -1,0 +1,142 @@
+---
+import "../styles/global.css";
+const { title = "Donald Clark – IT", description = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="/">Donald Clark</a>
+
+        <div class="links">
+          <a class="navlink" href="/projects/">Projects</a>
+          <a class="navlink" href="/blog/">Blog</a>
+          <a class="navlink" href="/resume/">Resume</a>
+          <a class="cta" href="/contact/">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <small>© {new Date().getFullYear()} Donald Clark</small>
+    </footer>
+  </body>
+</html>
+
+<style>
+  /* ---------- Theme tokens ---------- */
+  :global(:root) {
+    --bg: #0b1020;
+    --panel: rgba(255, 255, 255, 0.06);
+    --panel-2: rgba(255, 255, 255, 0.09);
+    --border: rgba(255, 255, 255, 0.10);
+    --text: rgba(255, 255, 255, 0.92);
+    --muted: rgba(255, 255, 255, 0.70);
+    --muted-2: rgba(255, 255, 255, 0.55);
+    --accent: #8ab4ff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --radius: 18px;
+  }
+
+  :global(*) { box-sizing: border-box; }
+  :global(html, body) { height: 100%; }
+
+  :global(body) {
+    margin: 0;
+    color: var(--text);
+    background:
+      radial-gradient(1200px 600px at 20% -10%, rgba(138,180,255,0.20), transparent 60%),
+      radial-gradient(900px 500px at 90% 0%, rgba(255,255,255,0.06), transparent 55%),
+      var(--bg);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.6;
+  }
+
+  :global(a) { color: inherit; }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2.25rem 1rem 3rem;
+  }
+
+  /* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(246, 248, 251, 0.85); /* or var(--panel) with opacity */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+
+  .nav {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0.95rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+
+  .links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .navlink {
+    text-decoration: none;
+    padding: 0.45rem 0.65rem;
+    border-radius: 999px;
+    color: var(--muted);
+  }
+
+  .navlink:hover {
+    color: var(--text);
+    background: var(--panel);
+  }
+
+  .cta {
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  }
+
+  .cta:hover {
+    border-color: rgba(138,180,255,0.35);
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.75rem 1rem;
+    text-align: center;
+    color: var(--muted-2);
+  }
+</style>

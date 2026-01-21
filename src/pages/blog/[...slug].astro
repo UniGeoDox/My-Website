@@ -1,0 +1,39 @@
+---
+import Layout from "../../components/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} | Donald Clark`} description={post.data.summary ?? ""}>
+  <article class="prose lg:prose-lg max-w-none prose-headings:scroll-mt-24">
+    <a href="/blog/" class="not-prose inline-flex items-center text-sm font-medium text-indigo-600 hover:underline">
+      ← Back to Blog
+    </a>
+
+    <header class="not-prose mt-4 mb-6">
+      <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">
+        {post.data.title}
+      </h1>
+
+      <p class="mt-2 text-sm text-slate-600">
+        {post.data.date ? post.data.date.toLocaleDateString() : ""}
+      </p>
+
+      {post.data.summary && (
+        <p class="mt-3 max-w-3xl text-slate-700">{post.data.summary}</p>
+      )}
+    </header>
+
+    <Content />
+  </article>
+</Layout>
