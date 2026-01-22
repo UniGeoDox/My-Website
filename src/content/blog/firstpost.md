@@ -7,7 +7,7 @@ draft: false
 ---
 ## Hello World!
 Hello and welcome to my blog! My name is Donald Clark, and I am an aspiring IT systems administrator with a growing interest in how software, infrastructure, and tooling all fit together. I decided to build this website as a place to document projects I’m working on, experiments I’m running, and things I’m learning along the way. Rather than relying entirely on a single platform, I wanted something I owned end‑to‑end, from the code to the deployment. That decision is what led to the creation of donald.click.
-
+##
 I plan to post on a roughly monthly basis, highlighting anything interesting I’ve worked on recently. Topics will likely vary, as I tend to explore multiple areas at once when I’m gaining that sweet, sweet knowledge. As I try new hobbies some stick into long term projects and some fail until another day.   Any project updates may eventually be sorted into topics but currently will be organized chronologically.  (spoilers maybe?)This first post serves as an introduction, as well as a high‑level breakdown of how the site itself is built.
 
 To get started, I set up a basic development environment. This included installing Node.js and npm for dependency management, creating a new GitHub repository for version control, and configuring my editor (VS Code) for web development. From there, I initialized the project using Astro and Tailwind CSS, and refreshed my familiarity with TypeScript by revisiting some older scripts I had written while playing the programming game BitBurner.
